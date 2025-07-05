@@ -239,6 +239,26 @@ function updateFavicon(minutes, seconds) {
     `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
+// Cek localStorage saat halaman dimuat
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('hideNote') === 'true') {
+    document.querySelector('.sticky-note')?.remove();
+  }
+});
+
+// Saat tombol close diklik
+document.querySelector('.close-btn')?.addEventListener('click', function() {
+  const note = document.querySelector('.sticky-note');
+  
+  note.style.opacity = '0';
+  note.style.transform = 'translateY(20px) rotate(5deg)';
+  
+  setTimeout(() => {
+    note.remove();
+    localStorage.setItem('hideNote', 'true');
+  }, 300);
+});
+
 // Modifikasi switchMode
 function switchMode(mode) {
   currentMode = mode;
