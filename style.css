@@ -1,4 +1,4 @@
-:root {
+g:root {
     --primary-color: #ff6b6b;
     --secondary-color: #ff9e7d;
     --background-color: #f7f7f7;
@@ -417,4 +417,28 @@ body.break-mode #dynamic-favicon svg circle {
   0%, 100% { transform: translateY(0) rotate(-2deg); }
   50% { transform: translateY(-5px) rotate(2deg); }
     
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 25px;
+  height: 25px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+
+.close-btn:hover {
+  background: #ff4757;
+  transform: scale(1.1);
+}
 }
