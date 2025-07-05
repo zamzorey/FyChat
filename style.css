@@ -183,7 +183,21 @@ body[data-theme="night"] .container {
 }
 
 .spotify-player {
-    margin: 1.5rem 0;
+    margin: 1.5rem auto; /* Pusatkan horizontal */
+    width: 85%; /* Sesuaikan lebar */
+    max-width: 300px; /* Maksimal lebar */
+    display: flex;
+    justify-content: center; /* Pusatkan konten */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Untuk iframe Spotify */
+#spotify-iframe {
+    display: block;
+    margin: 0 auto; /* Pastiin tengah */
+    border: none;
 }
 
 .settings {
