@@ -197,6 +197,17 @@ document.addEventListener('DOMContentLoaded', function() {
         closeSettings();
     }
 
+    // Auto-show bubble text setelah 5 detik
+setTimeout(() => {
+  const bubble = document.querySelector('.whatsapp-bubble');
+  bubble.classList.add('show-text');
+}, 5000);
+
+// Tambahkan di CSS:
+.whatsapp-bubble.show-text .bubble-text {
+  opacity: 1 !important;
+}
+
 // Inisialisasi favicon dengan nilai dari timer
 function initFavicon() {
   if (!document.getElementById('dynamic-favicon')) {
