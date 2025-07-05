@@ -53,26 +53,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('assets/images/nature-bg.jpg');
+    background-image: url('assets/img/nature-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 body[data-theme="nature"] {
-    background-image: url('assets/images/nature-bg.jpg');
+    background-image: url('assets/img/nature-bg.jpg');
 }
 
 body[data-theme="coffee"] {
-    background-image: url('assets/images/coffee-bg.jpg');
+    background-image: url('assets/img/coffee-bg.jpg');
 }
 
 body[data-theme="night"] {
-    background-image: url('assets/images/night-bg.jpg');
+    background-image: url('assets/imh/night-bg.jpg');
 }
 
 body[data-theme="beach"] {
-    background-image: url('assets/images/beach-bg.jpg');
+    background-image: url('assets/img/beach-bg.jpg');
 }
 
 .container {
