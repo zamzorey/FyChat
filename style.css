@@ -300,4 +300,13 @@ body[data-theme="night"] .container {
     .title {
         font-size: 1.5rem;
     }
+ /* Gaya dasar favicon */
+#dynamic-favicon {
+  transition: all 0.5s ease;
+}
+
+/* Warna berbeda untuk mode break */
+body.break-mode #dynamic-favicon svg circle {
+  fill: #4CAF50 !important;
+}
 }
