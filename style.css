@@ -1,4 +1,4 @@
-g:root {
+:root {
     --primary-color: #ff6b6b;
     --secondary-color: #ff9e7d;
     --background-color: #f7f7f7;
@@ -366,6 +366,7 @@ body.break-mode #dynamic-favicon svg circle {
   bottom: 20px;
   left: 20px;
   z-index: 100;
+  transition: all 0.3s ease-out;
 }
 
 .note-content {
