@@ -196,6 +196,84 @@ document.addEventListener('DOMContentLoaded', function() {
         resetTimer();
         closeSettings();
     }
+
+    // ====================== [FUNGSI FAVICON DINAMIS] ====================== //
+let faviconUpdateInterval;
+
+function initFavicon() {
+  // Buat elemen <link> favicon jika belum ada
+  if (!document.getElementById('dynamic-favicon')) {
+    const link = document.createElement('link');
+    link.id = 'dynamic-favicon';
+    link.rel = 'icon';
+    link.type = 'image/svg+xml';
+    document.head.appendChild(link);
+  }
+  updateFavicon(25, 0); // Set nilai awal
+}
+
+function updateFavicon(minutes, seconds) {
+  const isBreakMode = document.querySelector('.mode-btn.active').dataset.mode !== 'pomodoro';
+  const color = isBreakMode ? '#4CAF50' : '#ff6b6b';
+  
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="48" fill="${color}"/>
+      <text x="50" y="68" font-size="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif">
+        ${minutes}${seconds % 10}
+      </text>
+    </svg>
+  `;
+  
+  const favicon = document.getElementById('dynamic-favicon');
+  favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+// ====================== [INTEGRASI DENGAN TIMER] ====================== //
+function startTimer() {
+  if (!isRunning) {
+    isRunning = true;
+    timer = setInterval(updateTimer, 1000);
+    
+    // Update favicon setiap detik
+    faviconUpdateInterval = setInterval(() => {
+      const minutes = Math.floor(remainingSeconds / 60);
+      const seconds = remainingSeconds % 60;
+      updateFavicon(minutes, seconds);
+    }, 1000);
+  }
+}
+
+function pauseTimer() {
+  clearInterval(timer);
+  clearInterval(faviconUpdateInterval);
+  isRunning = false;
+}
+
+function resetTimer() {
+  pauseTimer();
+  remainingSeconds = totalSeconds;
+  updateDisplay();
+  
+  // Reset favicon
+  const initialMinutes = Math.floor(totalSeconds / 60);
+  updateFavicon(initialMinutes, 0);
+}
+
+function switchMode(mode) {
+  // ... kode existing Anda ...
+  
+  // Update favicon saat mode berubah
+  const initialMinutes = Math.floor(totalSeconds / 60);
+  updateFavicon(initialMinutes, 0);
+}
+
+// ====================== [INISIALISASI] ====================== //
+document.addEventListener('DOMContentLoaded', () => {
+  initFavicon();
+  
+  // Sisanya kode inisialisasi timer Anda...
+});
     
     // Close modal when clicking outside
     window.addEventListener('click', (event) => {
